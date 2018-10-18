@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using Hachette.API.SDK.UnitTests.Fixtures;
 using Xunit;
 
-namespace Hachette.API.SDK.UnitTests
+namespace SDK.Tests
 {
     public interface IHachetteSecurity
     {
-        string DeveloperKey {get;set;}
+        string DeveloperKey {get;}
     }
     public interface IRestClient
     {
@@ -33,6 +33,18 @@ namespace Hachette.API.SDK.UnitTests
             product = await fixture.client.Object.GetAsync();
             //assert
             Assert.True(product == @"{ 'title':'Casual Vacancy' }","Failed - JSON Payload not returned");
+        }
+
+        [Fact]
+        public void Should_Return_DevKey()
+        {
+            //arrange
+            string id = "xqbfsunnuhgfcizmovtlgpqanrnnzbwl";
+            //act
+            //assert
+            Assert.True(fixture.client.Object.Security.DeveloperKey == id,$"Failed, {fixture.client.Object.Security.DeveloperKey} " +
+              " does not match {id}");
+
         }
     }
 }

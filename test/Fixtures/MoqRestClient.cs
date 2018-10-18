@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Moq;
+using SDK.Tests;
 
 namespace Hachette.API.SDK.UnitTests.Fixtures
 {
