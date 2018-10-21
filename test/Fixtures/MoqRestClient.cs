@@ -16,7 +16,9 @@ namespace Hachette.API.SDK.UnitTests.Fixtures
             var product = new Product(){
                 Isbn = "9781234567890",
                 Title = "A Book",
-                Author = "G J Bradley"
+                Author = "G J Bradley",
+                Imprint = "Gollancz",
+                Division = "Orion"
             };
             security = new Mock<IHachetteSecurity>();
             security.Setup(s => s.DeveloperKey)
@@ -24,7 +26,9 @@ namespace Hachette.API.SDK.UnitTests.Fixtures
 
             client = new Mock<IRestClient>();
             client.Setup( moq => moq.GetAsync<Product>(It.IsAny<Uri>()))
-                    .Returns(Task.FromResult(product));         
+                    .Returns(Task.FromResult(product));      
+            client.Setup( moq => moq.GetAsync<Product>(It.IsAny<string>(),It.IsNotNull<IHachetteCommonParameters>())) 
+                    .Returns(Task.FromResult(product)); 
             client.Setup( moq => moq.Security)
                     .Returns(security.Object);
         }
