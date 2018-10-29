@@ -1,7 +1,7 @@
 namespace Hachette.API.SDK.Interfaces
 {
     /// <summary>
-    /// Security credentials needed to work with Hachetet API's.
+    /// Security credentials needed to work with Hachette APIs.
     /// </summary>
     public interface IHachetteSecurity
     {

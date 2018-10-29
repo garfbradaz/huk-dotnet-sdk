@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Hachette.API.SDK.Interfaces;
+using Hachette.API.SDK.Extensions;
+using Hachette.API.SDK.Validation;
 
 namespace Hachette.API.SDK.Common
 {
@@ -9,26 +13,28 @@ namespace Hachette.API.SDK.Common
     /// </summary>
     public class CommonParameters : IHachetteCommonParameters
     {
+        private static Imprints imprintValidator = Imprints.Create();
         /// <summary>
         /// Default ctor
         /// </summary>
         public CommonParameters()
         {
             Limit = 10;
-            FilterByDivisions = new HashSet<string>();
-            FilterByImprints = new HashSet<string>();
         }
-        
+        private HashSet<string> filterByImprints = new HashSet<string>();
+
         /// <summary>
         /// Exposed the FilterByImprints object that will be sent (if not empty), 
         /// in the filterByImprints parameter.
         /// </summary>
-        public HashSet<string> FilterByImprints { get ; private set;}
+        public ReadOnlyCollection<string> FilterByImprints { get { return filterByImprints.AsReadOnly();}}
+        
+        private HashSet<string> filterByDivisions = new HashSet<string>();
         /// <summary>
         /// Exposed the FilterByDivisions object that will be sent (if not empty), 
         /// in the filterByDivisions parameter.
         /// </summary>
-        public HashSet<string> FilterByDivisions { get ; private set; }
+        public ReadOnlyCollection<string> FilterByDivisions { get {return filterByDivisions.AsReadOnly();}}
         /// <summary>
         /// Filter by Date since the resource was last updated.
         /// </summary>
@@ -51,24 +57,49 @@ namespace Hachette.API.SDK.Common
         /// Add a division to be be included in filterByDivisions parameter.
         /// </summary>
         /// <param name="division"></param>
-        public void AddDivision(string division)
+        /// <returns>
+        /// boolean: If the addition was successful or not.
+        /// <see cref="ValidationAddStatus"/> : Determines why the operation failed.false
+        /// </returns>
+        public (bool,ValidationAddStatus) AddDivision(string division)
         {
             if(string.IsNullOrEmpty(division))
-                return;
+                return (false,ValidationAddStatus.FailedEmptyValue);
             
-            this.FilterByDivisions.Add(division);
+            var validated = Divisions.OneOf(division);
+            if(!validated)
+                return (false,ValidationAddStatus.FailedValueUnknown);
+            
+            var added = this.filterByDivisions.Add(division);
+            if(!added)
+                return (false,ValidationAddStatus.FailedDuplicateValue);
+            
+            return (true, ValidationAddStatus.Success);
+            
         }
 
         /// <summary>
         /// Add a imprint to be be included in filterByImprints parameter.
         /// </summary>
         /// <param name="imprint"></param>
-        public void AddImprint(string imprint)
+        /// <returns>
+        /// boolean: If the addition was successful or not.
+        /// <see cref="ValidationAddStatus"/> : Determines why the operation failed.false
+        /// </returns>
+        public (bool,ValidationAddStatus) AddImprint(string imprint)
         {
             if(string.IsNullOrEmpty(imprint))
-                return;
+                return (false,ValidationAddStatus.FailedEmptyValue);
             
-            this.FilterByDivisions.Add(imprint);
+            var validated = Imprints.OneOf(imprint);
+            if(!validated)
+                return (false,ValidationAddStatus.FailedValueUnknown);
+            
+            var added = this.filterByImprints.Add(imprint);
+            if(!added)
+                return (false,ValidationAddStatus.FailedDuplicateValue);
+            
+            return (true, ValidationAddStatus.Success);
         }
 
         /// <summary>
@@ -77,7 +108,10 @@ namespace Hachette.API.SDK.Common
         /// <param name="division"></param>
         public void RemoveDivision(string division)
         {
-            throw new NotImplementedException();
+            if(string.IsNullOrEmpty(division))
+                return;
+            
+            this.filterByDivisions.Remove(division);
         }
 
         /// <summary>
@@ -86,7 +120,10 @@ namespace Hachette.API.SDK.Common
         /// <param name="imprint"></param>
         public void RemoveImprint(string imprint)
         {
-            throw new NotImplementedException();
+            if(string.IsNullOrEmpty(imprint))
+                return;
+            
+            this.filterByImprints.Remove(imprint);
         }
     }
 }

@@ -35,24 +35,9 @@ namespace SDK.Tests
         }
 
         [Fact]
-        public async Task Should_Return_Product_With_Url()
-        {
-            //arrange
-            Uri url = new Uri($"{basePath}?filterByImprint=Gollancz&limit=10");
-            
-            //act
-            var result = await fixture.GetAsync<Product>(url);
-
-            //assert
-            Assert.True(result.Isbn == "9781234567890",$"Assert failed, isbn is incorrect: {result.Isbn}");
-            Assert.True(result.Title == "A Book",$"Assert failed, title is incorrect: {result.Title}");
-            Assert.True(result.Author == "G J Bradley",$"Assert failed, author is incorrect: {result.Author}");
-        }
-        [Fact]
         public async Task Should_Return_Product_With_Url_With_Parameters()
         {
             //arrange
-            Uri url = new Uri($"{basePath}?filterByImprint=Gollancz&limit=10");
             IHachetteCommonParameters parameters = new CommonParameters();
             string div = "Orion";
             string imp = "Gollancz";
@@ -60,7 +45,7 @@ namespace SDK.Tests
             //act
             parameters.AddDivision(div);
             parameters.AddImprint(imp);
-            var result = await fixture.GetAsync<Product>(url);
+            var result = await fixture.GetAsync<Product>(basePath,parameters);
 
             //assert
             Assert.True(result.Isbn == "9781234567890",$"Assert failed, isbn is incorrect: {result.Isbn}");

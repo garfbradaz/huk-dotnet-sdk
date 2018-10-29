@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Hachette.API.SDK.Common;
 
 namespace Hachette.API.SDK.Interfaces
 {
@@ -12,11 +14,11 @@ namespace Hachette.API.SDK.Interfaces
         /// <summary>
         /// Retrieve API Imprint names you want the Hachette API to filter on.
         /// </summary>
-         HashSet<string> FilterByImprints {get;}
+         ReadOnlyCollection<string> FilterByImprints {get;}
         /// <summary>
         /// Retrieve API Divisions names you want the Hachette API to filter on.
         /// </summary>
-        HashSet<string> FilterByDivisions {get;}
+        ReadOnlyCollection<string> FilterByDivisions {get;}
         /// <summary>
         /// Filter by Date since the resource was last updated.
         /// </summary>
@@ -42,12 +44,12 @@ namespace Hachette.API.SDK.Interfaces
         /// Add a division to filterByDivision parameter.
         /// </summary>
         /// <param name="division"></param>
-        void AddDivision(string division);
+        (bool,ValidationAddStatus) AddDivision(string division);
         /// <summary>
         /// Add a imprint to filterByImprint parameter.
         /// </summary>
         /// <param name="imprint"></param>
-        void AddImprint(string imprint);
+        (bool,ValidationAddStatus)  AddImprint(string imprint);
         /// <summary>
         /// Remove a division to filterByDivision parameter.
         /// </summary>
