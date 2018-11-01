@@ -91,12 +91,12 @@ namespace Hachette.API.SDK.Extensions
                 if (!firstQueryBuilt)
                 {
                     //TODO:: Need to do Type Checking for ToString() DateTimeOffset format.
-                    queryString = $"?{queryName}={date.ToString("o")}";
+                    queryString = $"?{queryName}={date.ToString("s")}";
                     firstQueryBuilt = true;
                 }
                 else
                 {
-                    queryString = queryString + $"&{queryName}={date.ToString("o")}";
+                    queryString = queryString + $"&{queryName}={date.ToString("s")}";
                 }
             }
         }
@@ -124,12 +124,12 @@ namespace Hachette.API.SDK.Extensions
                 if (!firstQueryBuilt)
                 {
                     //TODO:: Need to do Type Checking for ToString() DateTimeOffset format.
-                    queryString = $"?{queryName}={date.GetValueOrDefault().ToString("o")}";
+                    queryString = $"?{queryName}={date.GetValueOrDefault().ToString("s")}";
                     firstQueryBuilt = true;
                 }
                 else
                 {
-                    queryString = queryString + $"&{queryName}={date.GetValueOrDefault().ToString("o")}";
+                    queryString = queryString + $"&{queryName}={date.GetValueOrDefault().ToString("s")}";
                 }
             }
         }

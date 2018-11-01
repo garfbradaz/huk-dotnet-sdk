@@ -1,6 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Hachette.API.SDK;
 using Hachette.API.SDK.Common;
 using Hachette.API.SDK.Interfaces;
 using Hachette.API.SDK.UnitTests.Fixtures;
@@ -53,6 +54,24 @@ namespace SDK.Tests
             Assert.True(result.Author == "G J Bradley",$"Assert failed, author is incorrect: {result.Author}");
             Assert.True(result.Imprint == imp,$"Assert failed, imprint is incorrect: {result.Imprint}");
             Assert.True(result.Division == div,$"Assert failed, imprint is incorrect: {result.Division}");
+        }
+    
+        [Fact]
+        public async Task Test_GetAsync()
+        {
+            string baseURL = "https://hachetteuk-test.apigee.net/api/v1/products";
+            var security = new Security();
+            security.DeveloperKey = "e3ygONq5WtK9dWXWFGAGWgjTNZkWzCa4";
+
+            var parameters = new CommonParameters();
+            parameters.AddImprint("Gollancz");
+            parameters.AddImprint("Gateway");
+            parameters.FilterByIsActive = true;
+        
+            RestClient client = new RestClient(security);
+
+            var response = await client.GetAsync<dynamic>(baseURL,parameters);
+            Assert.True(true);
         }
     }
 }

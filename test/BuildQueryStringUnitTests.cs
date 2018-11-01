@@ -107,7 +107,7 @@ namespace SDK.Tests
             //act
             var d = Convert.ToDateTime("2018-07-04T09:00:00");
 
-            parameters.FilterByTimestamp = new DateTimeOffset(d);
+            parameters.FilterByTimestamp = new DateTimeOffset(d,new TimeSpan(0,0,0));
             var returned = parameters.BuildQueryString();
 
             //arrange
