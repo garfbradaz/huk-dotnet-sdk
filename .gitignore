@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Xunit & VSCode Test Explorer
+_[Rr]esults/
+[Tt]est-explorer/
+*.trx
+
 # User-specific files
 *.suo
 *.user
