@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Hachette.API.SDK.Core.DI.Interfaces;
+using Hachette.API.SDK.Core.DI.Modules;
 using Hachette.API.SDK.Extensions;
 using Hachette.API.SDK.Interfaces;
+using Hachette.API.SDK.SimpleDI.Containers;
 using Hachette.API.SDK.Utilities;
 using Newtonsoft.Json;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Hachette.API.SDK.Core
 {
@@ -15,6 +19,8 @@ namespace Hachette.API.SDK.Core
     /// </summary>
     public class BaseClient : IRestClient
     {
+         private readonly IServiceProvider  container;
+
         /// <summary>
         /// Default Constructor.
         /// </summary>
@@ -23,6 +29,10 @@ namespace Hachette.API.SDK.Core
         {
             this.Security = security;
             this.assemblyVersion = GetVersion();
+            this.container = new SimpleContainer()
+                                .Register(new EndpointModule())
+                                .Build();
+            this.Endpoint = this.container.GetService<IEndpoint>();
         }
         /// <summary>
         /// Reusable Instance HTTP Client.
@@ -93,7 +103,6 @@ namespace Hachette.API.SDK.Core
                     );
                 }
             }
-
             return default;
         }
 

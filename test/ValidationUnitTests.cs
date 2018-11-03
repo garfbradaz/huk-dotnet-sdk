@@ -1,7 +1,7 @@
 using Hachette.API.SDK.Validation;
 using Xunit;
 
-namespace SDK.Tests
+namespace Tests.SDK
 {
     public class ValidationUnitTests
     {

@@ -5,7 +5,7 @@ using Hachette.API.SDK.Extensions;
 using Hachette.API.SDK.Interfaces;
 using Xunit;
 
-namespace SDK.Tests
+namespace Tests.SDK
 {
     public class BuildQueryStringUnitTests
     {

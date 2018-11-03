@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Hachette.API.SDK.Interfaces;
 using Hachette.API.SDK.UnitTests.Models;
 using Moq;
-using SDK.Tests;
+using Tests.SDK;
 
 namespace Hachette.API.SDK.UnitTests.Fixtures
 {

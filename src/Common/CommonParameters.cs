@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Hachette.API.SDK.Interfaces;
 using Hachette.API.SDK.Extensions;
 using Hachette.API.SDK.Validation;

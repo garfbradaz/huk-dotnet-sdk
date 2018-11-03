@@ -8,7 +8,7 @@ using Hachette.API.SDK.UnitTests.Fixtures;
 using Hachette.API.SDK.UnitTests.Models;
 using Xunit;
 
-namespace SDK.Tests
+namespace Tests.SDK
 {
 
 
