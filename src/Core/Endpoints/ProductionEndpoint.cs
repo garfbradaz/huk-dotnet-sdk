@@ -1,13 +1,13 @@
-using Hachette.API.SDK.Interfaces;
+using Hachette.API.SDK.Core.DI.Interfaces;
 
-namespace Hachette.API.SDK.Core.Configuration
+namespace Hachette.API.SDK.Core.Endpoints
 {
     /// <summary>
     /// Details for accessing our Test API.
     /// </summary>
     public class ProductionEndpoint : IEndpoint
     {
-        private string currentVersion = default;
+        private string currentVersion = default(string);
         
         /// <summary>
         /// Current API Version.
@@ -15,7 +15,7 @@ namespace Hachette.API.SDK.Core.Configuration
         /// <value></value>
         public string CurrentVersion {get {return this.currentVersion;}}
 
-        private string baseUrl = default;
+        private string baseUrl = default(string);
         
         /// <summary>
         /// Base URL

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Hachette.API.SDK.Common;
 
@@ -11,6 +10,11 @@ namespace Hachette.API.SDK.Interfaces
     /// </summary>
     public interface IHachetteCommonParameters
     {
+        /// <summary>
+        /// Retrieve ID field.
+        /// </summary>
+        /// <value></value>
+        string Id {get;set;}
         /// <summary>
         /// Retrieve API Imprint names you want the Hachette API to filter on.
         /// </summary>

@@ -5,10 +5,25 @@ using Hachette.API.SDK.Extensions;
 using Hachette.API.SDK.Interfaces;
 using Xunit;
 
-namespace SDK.Tests
+namespace Unit.SDK
 {
     public class BuildQueryStringUnitTests
     {
+        [Fact]
+        public void Should_Build_Id()
+        {
+            //arrange
+            IHachetteCommonParameters parameters = new CommonParameters();
+            parameters.Id = "9780297843320";
+            string expected = "/9780297843320";
+
+            //act
+            var result = parameters.BuildQueryString();
+
+            //assert
+            Assert.True(result == expected,
+                        $"Assert failed, expected {expected}, received {result}");
+        }
         [Fact]
         public void Should_LowerCase_FirstLetter()
         {

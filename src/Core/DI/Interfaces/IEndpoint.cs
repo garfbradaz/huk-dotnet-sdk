@@ -1,4 +1,4 @@
-namespace Hachette.API.SDK.Interfaces
+namespace Hachette.API.SDK.Core.DI.Interfaces
 {
     /// <summary>
     /// Contract for the ConnectionInformation

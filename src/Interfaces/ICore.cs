@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Hachette.API.SDK.Interfaces;
+using Hachette.API.SDK.Core.DI.Interfaces;
 
 namespace Hachette.API.SDK.Interfaces
 {

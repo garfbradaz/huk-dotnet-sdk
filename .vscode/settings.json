@@ -1,5 +1,5 @@
 {
-    "dotnet-test-explorer.testProjectPath": ".\\test",
+    "dotnet-test-explorer.testProjectPath": "test\\**\\*[test].csproj",
     "dotnet-test-explorer.autoExpandTree": true,
     "dotnet-test-explorer.pathForResultFile": ".\\test\\_results",
     "dotnet-test-explorer.addProblems": true
