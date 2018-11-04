@@ -1,7 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Company>Hachette UK</Company>
+    <Author>Gareth Bradley</Author>
+    <Copyright>Copyright © 2018</Copyright>
+    <LangVersion>latest</LangVersion> 
+    <Product>Hachette UK API Client SDK</Product>
+    <ProductName>HUKDotNetSDK</ProductName>
+    <ProductVersion>0.0.0.2</ProductVersion>
+    <AssemblyVersion>0.0.0.2</AssemblyVersion>
+    <FileVersion>0.0.0.2</FileVersion>
+    <RootNamespace>Hachette.API</RootNamespace>
+    <AssemblyName>Hachette.API.SDK</AssemblyName>
+    <RepositoryUrl>https://github.com/HachetteUK/huk-dotnet-sdk</RepositoryUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0-preview3-35497" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.2.0-preview3-35497" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0-preview3-35497" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0-preview3-35497" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0-preview3-35497" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
 
 </Project>
