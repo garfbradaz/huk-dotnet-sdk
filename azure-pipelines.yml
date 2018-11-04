@@ -1,30 +1,92 @@
-queue:
-  name: Hosted VS2017
+resources:
+- repo: self
+  clean: true
+phases:
+- phase: Phase_1
+  displayName: Phase 1 - Windows
+  condition: succeeded()
+  queue:
+    name: Hosted VS2017
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build - src'
+    inputs:
+      projects: '**/src/*.csproj'
+      arguments: '-c Release'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build - Tests'
+    inputs:
+      projects: '**/test/**/*.csproj'
+      # workingDirectory: test/Unit    
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet test'
+    inputs:
+      command: test
+      projects: '**/test/**/*.csproj'
 
-steps:
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet build - src'
-  inputs:
-    projects: '**/src/*.csproj'
-    arguments: '-c Release'
+- phase: Phase_2
+  displayName: Phase 2 -Linux
+  condition: succeeded()
+  queue:
+    name: Hosted Linux Preview
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build - src '
+    inputs:
+      projects: '**/src/*.csproj'
+      arguments: '-c Release'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build - Tests'
+    inputs:
+      projects: '**/test.**/*.csproj'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet test'
+    inputs:
+      command: test
+      projects: '**/test/**/*.csproj'
+- phase: Phase_3
+  displayName: Phase 3 - MacOS
+  condition: succeeded()
+  queue:
+    name: Hosted macOS
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build - src'
+    inputs:
+      projects: '**/src/*.csproj'
+      arguments: '-c Release'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet build - Tests'
+    inputs:
+      projects: '**/test/**/*.csproj'
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet test'
+    inputs:
+      command: test
+      projects: '**/test/**/*.csproj'
+- phase: Phase_4
+  displayName: Phase 4 - Nuget
+  condition: succeeded()
+  queue:
+    name: Hosted VS2017
+  steps:
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet pack'
+    inputs:
+      command: pack
+      packagesToPack: src/Hachette.API.SDK.csproj
+      packDirectory: '$(Build.ArtifactStagingDirectory)/Pack'
+      versioningScheme: byPrereleaseNumber
+      majorVersion: 0
+      minorVersion: 1
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet push nuget org'
+    inputs:
+      command: push
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/Pack/*.nupkg'
+      nuGetFeedType: external
+      publishFeedCredentials: 'Nuget Org'
 
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet build - Unit Tests'
-  inputs:
-    projects: '**/*.csproj'
-    workingDirectory: test/Unit
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet build - Integration Tests'
-  inputs:
-    projects: '**/*.csproj'
-    workingDirectory: test/Integration
-
-- task: DotNetCoreCLI@2
-  displayName: 'dotnet test'
-  inputs:
-    command: test
-    projects: '**/test/**/*.csproj'
 
 
 
