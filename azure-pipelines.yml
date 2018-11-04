@@ -23,7 +23,6 @@ phases:
     inputs:
       command: test
       projects: '**/test/**/*.csproj'
-
 - phase: Phase_2
   displayName: Phase 2 -Linux
   condition: succeeded()
@@ -38,7 +37,7 @@ phases:
   - task: DotNetCoreCLI@2
     displayName: 'dotnet build - Tests'
     inputs:
-      projects: '**/test.**/*.csproj'
+      projects: '**/test/**/*.csproj'
   - task: DotNetCoreCLI@2
     displayName: 'dotnet test'
     inputs:
@@ -65,6 +64,10 @@ phases:
       command: test
       projects: '**/test/**/*.csproj'
 - phase: Phase_4
+  dependsOn: 
+    - Phase_1
+    - Phase_2
+    - Phase_3
   displayName: Phase 4 - Nuget
   condition: succeeded()
   queue:
@@ -79,13 +82,23 @@ phases:
       versioningScheme: byPrereleaseNumber
       majorVersion: 0
       minorVersion: 1
+  # - task: DotNetCoreCLI@2
+  #   displayName: 'dotnet push nuget org'
+  #   inputs:
+  #     command: push
+  #     packagesToPush: '$(Build.ArtifactStagingDirectory)/Pack/*.nupkg'
+  #     nuGetFeedType: external
+  #     publishFeedCredentials: 'AzureDevOps'
   - task: DotNetCoreCLI@2
-    displayName: 'dotnet push nuget org'
+    displayName: 'dotnet custom push'
     inputs:
-      command: push
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/Pack/*.nupkg'
-      nuGetFeedType: external
-      publishFeedCredentials: 'AzureDevOps'
+      command: custom
+      custom: 'nuget push'
+      arguments: '$(Build.ArtifactStagingDirectory)\Pack\*.nupkg  -k oy2ayj5wrpt2bsrlfteatthby7fs6tju5m26e5v2msiu7a -s https://api.nuget.org/v3/index.json'
+
+
+
+
 
 
 
