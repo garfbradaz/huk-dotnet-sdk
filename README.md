@@ -1,4 +1,4 @@
-[![Build Status](https://hukweb365.visualstudio.com/HUK%20API%20SDK%20-%20Open%20Source/_apis/build/status/HachetteUK.huk-dotnet-sdk)](https://hukweb365.visualstudio.com/HUK%20API%20SDK%20-%20Open%20Source/_build/latest?definitionId=7)
+[![Build Status](https://hukweb365.visualstudio.com/HUK%20API%20SDK%20-%20Open%20Source/_apis/build/status/HachetteUK.huk-dotnet-sdk)](https://hukweb365.visualstudio.com/HUK%20API%20SDK%20-%20Open%20Source/_build/latest?definitionId=7) [![NuGet Package](https://img.shields.io/nuget/v/Hachette.API.SDK.svg)](https://www.nuget.org/packages/Hachette.API.SDK)
 
 # Hachette UK API .NET SDK
 
