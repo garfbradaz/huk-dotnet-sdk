@@ -23,16 +23,16 @@ namespace Hachette.API.SDK.Core.DI.Modules
             var config = new ConfigurationBuilder()
                             .AddEnvironmentVariables("hukRestClient")
                             .Build();  
-            EndpointConfig endpointConfig = new EndpointConfig();
-            
-            if(config != null)
-            {
-                endpointConfig = config.Get<EndpointConfig>();
-            }
-            else
+            var endpointConfig = config.Get<EndpointConfig>();
+
+            if(endpointConfig == null)
+                endpointConfig = new EndpointConfig();
+
+            if(string.IsNullOrEmpty(endpointConfig?.EndpointType))
             {
                 endpointConfig.EndpointType = "test";
             }
+
             
             services.AddSingleton<EndpointConfig>();            
             services.AddSingleton<IEndpoint>( endpoint => {

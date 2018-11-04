@@ -2,7 +2,7 @@ using System.Linq;
 using Hachette.API.SDK.Common;
 using Xunit;
 
-namespace Tests.SDK
+namespace Unit.SDK
 {
     public class CommonParameterUnitTests
     {

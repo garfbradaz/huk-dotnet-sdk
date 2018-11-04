@@ -11,6 +11,11 @@ namespace Hachette.API.SDK.Interfaces
     public interface IHachetteCommonParameters
     {
         /// <summary>
+        /// Retrieve ID field.
+        /// </summary>
+        /// <value></value>
+        string Id {get;set;}
+        /// <summary>
         /// Retrieve API Imprint names you want the Hachette API to filter on.
         /// </summary>
          ReadOnlyCollection<string> FilterByImprints {get;}

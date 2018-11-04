@@ -3,7 +3,7 @@ using Hachette.API.SDK.Core.Configuration;
 using Microsoft.Extensions.Configuration;
 using Xunit;
 
-namespace Tests.SDK.DI
+namespace Unit.SDK.DI
 {
     public class EnvironmentVariableTests
     {

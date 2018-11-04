@@ -20,7 +20,9 @@ namespace Hachette.API.SDK.Extensions
         {
             string queryString = string.Empty;
             bool firstQueryBuilt = false;
-
+            if(!string.IsNullOrEmpty(queryStringParameters.Id))
+                return $"/{queryStringParameters.Id}";
+                
             BuildFromReadonOnlyCollection(queryStringParameters.FilterByDivisions,
                                           ref queryString, 
                                           ref firstQueryBuilt,

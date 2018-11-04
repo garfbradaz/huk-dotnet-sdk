@@ -12,7 +12,7 @@ namespace Hachette.API.SDK.Common
     /// </summary>
     public class CommonParameters : IHachetteCommonParameters
     {
-        private static Imprints imprintValidator = Imprints.Create();
+
         /// <summary>
         /// Default ctor
         /// </summary>
@@ -20,6 +20,7 @@ namespace Hachette.API.SDK.Common
         {
             Limit = 10;
         }
+
         private HashSet<string> filterByImprints = new HashSet<string>();
 
         /// <summary>
@@ -51,6 +52,12 @@ namespace Hachette.API.SDK.Common
         /// to continue from (or start if the beginning of the query).
         /// </summary>
         public int? Page { get ; set ; }
+
+        /// <summary>
+        /// Id field.
+        /// </summary>
+        /// <value></value>
+        public string Id {get;set;}
 
         /// <summary>
         /// Add a division to be be included in filterByDivisions parameter.

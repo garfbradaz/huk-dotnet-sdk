@@ -3,7 +3,7 @@ using Hachette.API.SDK.Core.DI.Factories;
 using Hachette.API.SDK.Core.Endpoints;
 using Xunit;
 
-namespace Tests.SDK.DI
+namespace Unit.SDK.DI
 {
     public class EndpointFactoryTests
     {

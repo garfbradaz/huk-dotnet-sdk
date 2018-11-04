@@ -7,7 +7,7 @@ namespace Hachette.API.SDK.Core.Endpoints
     /// </summary>
     public class TestEndpoint : IEndpoint
     {
-        private string currentVersion = default;
+        private string currentVersion = default(string);
         
         /// <summary>
         /// Current API Version.
@@ -15,7 +15,7 @@ namespace Hachette.API.SDK.Core.Endpoints
         /// <value></value>
         public string CurrentVersion {get {return this.currentVersion;}}
 
-        private string baseUrl = default;
+        private string baseUrl = default(string);
         
         /// <summary>
         /// Base URL

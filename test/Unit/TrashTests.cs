@@ -3,7 +3,7 @@ using Hachette.API.SDK.Common;
 using Hachette.API.SDK.Utilities;
 using Xunit;
 
-namespace Tests.Utilities
+namespace Unit.Utilities
 {
     public class TrashTests
     {
