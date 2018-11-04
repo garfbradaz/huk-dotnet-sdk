@@ -1,3 +1,5 @@
+[![Build Status](https://hukweb365.visualstudio.com/HUK%20API%20SDK%20-%20Open%20Source/_apis/build/status/HachetteUK.huk-dotnet-sdk)](https://hukweb365.visualstudio.com/HUK%20API%20SDK%20-%20Open%20Source/_build/latest?definitionId=7)
+
 # Hachette UK API .NET SDK
 
 Hachette UK are currently in the progress of building a public API Gateway to our Bibliographic data. This will encompass resources like:
