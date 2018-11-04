@@ -31,6 +31,7 @@ namespace Hachette.API.SDK.Core
         {
             this.Security = security;
             this.assemblyVersion = GetVersion();
+            this.container = null;
             this.container = new SimpleContainer()
                                 .Register(new EndpointModule())
                                 .Build();

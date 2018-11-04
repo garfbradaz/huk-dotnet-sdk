@@ -1,18 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Company>Hachette UK</Company>
+    <Company>HachetteUK</Company>
     <Author>Gareth Bradley</Author>
     <Copyright>Copyright © 2018</Copyright>
     <LangVersion>latest</LangVersion> 
     <Product>Hachette UK API Client SDK</Product>
     <ProductName>HUKDotNetSDK</ProductName>
-    <ProductVersion>0.0.0.2</ProductVersion>
-    <AssemblyVersion>0.0.0.2</AssemblyVersion>
-    <FileVersion>0.0.0.2</FileVersion>
+    <ProductVersion>0.0.0.3</ProductVersion>
+    <AssemblyVersion>0.0.0.3</AssemblyVersion>
+    <FileVersion>0.0.0.3</FileVersion>
     <RootNamespace>Hachette.API</RootNamespace>
     <AssemblyName>Hachette.API.SDK</AssemblyName>
     <RepositoryUrl>https://github.com/HachetteUK/huk-dotnet-sdk</RepositoryUrl>
+    <PackageIconUrl>https://github.com/HachetteUK/huk-dotnet-sdk/blob/master/src/_assets/hachette-logo.jpg</PackageIconUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0-preview3-35497" />

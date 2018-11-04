@@ -18,6 +18,8 @@ namespace Unit.SDK.Core
 
             //act
             var client = new BaseClient(security);
+            //Linux Testing: Variables remain for the lifetime of the tests.
+            Environment.SetEnvironmentVariable("hukRestClientEndpointType","xxx",EnvironmentVariableTarget.Process);
 
             //assert
             Assert.True(client.Endpoint.CurrentVersion ==  Constants.CurrentVersion,
@@ -29,30 +31,32 @@ namespace Unit.SDK.Core
         public void Should_Setup_Test_Endpoint_If_EnvironmentVariable_Wrong()
         {
             //arrange
+        
             Environment.SetEnvironmentVariable("hukRestClientEndpointTType","test",EnvironmentVariableTarget.Process);
             var security = new Security();
             security.DeveloperKey = "e3ygONq5WtK9dWXWFGAGWgjTNZkWzCa4";
 
             //act
             var client = new BaseClient(security);
+            Environment.SetEnvironmentVariable("hukRestClientEndpointTType","xxx",EnvironmentVariableTarget.Process);
 
             //assert
             Assert.True(client.Endpoint.CurrentVersion ==  Constants.CurrentVersion,
                         $"Assert failed, expected {client.Endpoint.CurrentVersion}, received {Constants.CurrentVersion}");
             Assert.True(client.Endpoint.BaseUrl ==  Constants.BaseTestURL,
-                        $"Assert failed, expected {client.Endpoint.BaseUrl}, received {Constants.BaseTestURL}");
+                        $"Assert failed, expected {Constants.BaseTestURL}, received {client.Endpoint.BaseUrl}");
         }
 
         [Fact]
         public void Should_Setup_Test_Endpoint_If_EnvironmentVariable_Value_Unknown()
         {
-            //arrange
             Environment.SetEnvironmentVariable("hukRestClientEndpointType","testing",EnvironmentVariableTarget.Process);
             var security = new Security();
             security.DeveloperKey = "e3ygONq5WtK9dWXWFGAGWgjTNZkWzCa4";
 
             //act
             var client = new BaseClient(security);
+            Environment.SetEnvironmentVariable("hukRestClientEndpointType","xxx",EnvironmentVariableTarget.Process);
 
             //assert
             Assert.True(client.Endpoint.CurrentVersion ==  Constants.CurrentVersion,
@@ -70,6 +74,7 @@ namespace Unit.SDK.Core
 
             //act
             var client = new BaseClient(security);
+            Environment.SetEnvironmentVariable("hukRestClientEndpointType","xxx",EnvironmentVariableTarget.Process);
 
             //assert
             Assert.True(client.Endpoint.CurrentVersion ==  Constants.CurrentVersion,
