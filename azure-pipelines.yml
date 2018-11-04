@@ -85,7 +85,7 @@ phases:
       command: push
       packagesToPush: '$(Build.ArtifactStagingDirectory)/Pack/*.nupkg'
       nuGetFeedType: external
-      publishFeedCredentials: 'Nuget Org'
+      publishFeedCredentials: 'AzureDevOps'
 
 
 
