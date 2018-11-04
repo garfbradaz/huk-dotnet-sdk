@@ -40,7 +40,7 @@ namespace Unit.SDK.Core
             Assert.True(client.Endpoint.CurrentVersion ==  Constants.CurrentVersion,
                         $"Assert failed, expected {client.Endpoint.CurrentVersion}, received {Constants.CurrentVersion}");
             Assert.True(client.Endpoint.BaseUrl ==  Constants.BaseTestURL,
-                        $"Assert failed, expected {client.Endpoint.BaseUrl}, received {Constants.BaseTestURL}");
+                        $"Assert failed, expected {Constants.BaseTestURL}, received {client.Endpoint.BaseUrl}");
         }
 
         [Fact]
