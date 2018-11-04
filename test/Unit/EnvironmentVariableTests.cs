@@ -17,6 +17,7 @@ namespace Unit.SDK.DI
                             .Build();
             //act
             var endpointConfig = config.Get<EndpointConfig>();
+            Environment.SetEnvironmentVariable("hukRestClientEndpointType","xxx",EnvironmentVariableTarget.Process);
             //assert
             Assert.True(endpointConfig.EndpointType == "test",
                         $"Assert failed, expected test, received {endpointConfig.EndpointType}");
@@ -31,6 +32,7 @@ namespace Unit.SDK.DI
                             .Build();
             //act
             var endpointConfig = config.Get<EndpointConfig>();
+            Environment.SetEnvironmentVariable("hukRestClientEndpointType","xxx",EnvironmentVariableTarget.Process);
             //assert
             Assert.True(endpointConfig.EndpointType == "production",
                         $"Assert failed, expected test, received {endpointConfig.EndpointType}");
