@@ -93,8 +93,8 @@ phases:
     displayName: 'dotnet custom push'
     inputs:
       command: custom
-      custom: 'nuget push'
-      arguments: '$(Build.ArtifactStagingDirectory)\Pack\*.nupkg  -k oy2ayj5wrpt2bsrlfteatthby7fs6tju5m26e5v2msiu7a -s https://api.nuget.org/v3/index.json'
+      custom:  nuget push
+      arguments: '$(Build.ArtifactStagingDirectory)/Pack/*.nupkg  -k oy2ayj5wrpt2bsrlfteatthby7fs6tju5m26e5v2msiu7a -s https://api.nuget.org/v3/index.json'
 
 
 
