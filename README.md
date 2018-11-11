@@ -10,7 +10,7 @@ Hachette UK are currently in the progress of building a public API Gateway to ou
 
 Currently the API and this SDK is a very much work in progress (WIP), but please Star us if you wish to follow and keep up with where we are.
 
-Also we have plan to create a lightweight JavaScript API using TypeScript. But we will link that over when done.
+Also we have plan to create a lightweight [JavaScript API](https://github.com/HachetteUK/huk-js-sdk/blob/master/README.md) using TypeScript.
 
 ## UPDATE
 
