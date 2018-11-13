@@ -20,7 +20,7 @@ namespace Integration.SDK
 
             RestClient client = new RestClient(security);
 
-            var response = await client.GetAsync(baseURL,parameters);
+            var response = await client.GetAsync(parameters,baseURL);
             Assert.True(response.record.isbn13 == "9780297843320",
                         $"Assert failed, expected {parameters.Id}, received {response.record.isbn13} ");
         }
@@ -37,7 +37,7 @@ namespace Integration.SDK
 
             RestClient client = new RestClient(security);
 
-            var response = await client.GetAsync(baseURL,parameters);
+            var response = await client.GetAsync(parameters,baseURL);
             Assert.True(response.record[0].imprint == "Gollancz",
                         $"Assert failed, expected Gollancz, received {response.record[0].imprint} ");           
         }

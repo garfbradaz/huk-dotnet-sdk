@@ -26,7 +26,7 @@ namespace Hachette.API.SDK.UnitTests.Fixtures
                     .Returns("xqbfsunnuhgfcizmovtlgpqanrnnzbwl");
 
             client = new Mock<RestClient>();   
-            client.Setup( moq => moq.GetAsync(It.IsAny<string>(),It.IsNotNull<IHachetteCommonParameters>())) 
+            client.Setup( moq => moq.GetAsync(It.IsNotNull<IHachetteCommonParameters>(),It.IsAny<string>()))
                     .Returns(Task.FromResult(product)); 
             client.Setup( moq => moq.Security)
                     .Returns(security.Object);

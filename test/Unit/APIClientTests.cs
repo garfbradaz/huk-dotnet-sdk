@@ -64,7 +64,7 @@ namespace Unit.Tests.SDK
         
             RestClient client = new RestClient(security);
 
-            var response = await client.GetAsync(baseURL,parameters);
+            var response = await client.GetAsync(parameters,baseURL);
             Assert.True(response.record[0].imprint == "Gollancz",
                         $"Assert failed, expected Gollancz, received {response.record.imprint} ");
         }
