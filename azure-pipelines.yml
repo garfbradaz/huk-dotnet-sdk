@@ -81,7 +81,7 @@ phases:
       packDirectory: '$(Build.ArtifactStagingDirectory)/Pack'
       versioningScheme: byPrereleaseNumber
       majorVersion: 0
-      minorVersion: 1
+      minorVersion: 2
   # - task: DotNetCoreCLI@2
   #   displayName: 'dotnet push nuget org'
   #   inputs:

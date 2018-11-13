@@ -2,18 +2,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Company>HachetteUK</Company>
+    <Description>Hachette UK REST API SDK. HTTP Client to work with our Bibliographic API.</Description>
     <Author>Gareth Bradley</Author>
     <Copyright>Copyright © 2018</Copyright>
     <LangVersion>latest</LangVersion> 
     <Product>Hachette UK API Client SDK</Product>
     <ProductName>HUKDotNetSDK</ProductName>
-    <ProductVersion>0.0.0.3</ProductVersion>
-    <AssemblyVersion>0.0.0.3</AssemblyVersion>
-    <FileVersion>0.0.0.3</FileVersion>
+    <ProductVersion>0.0.2.4</ProductVersion>
+    <AssemblyVersion>0.0.2.4</AssemblyVersion>
+    <FileVersion>0.0.2.4</FileVersion>
     <RootNamespace>Hachette.API</RootNamespace>
     <AssemblyName>Hachette.API.SDK</AssemblyName>
     <RepositoryUrl>https://github.com/HachetteUK/huk-dotnet-sdk</RepositoryUrl>
-    <PackageIconUrl>https://github.com/HachetteUK/huk-dotnet-sdk/blob/master/src/_assets/hachette-logo.jpg</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/HachetteUK/huk-dotnet-sdk/master/src/_assets/hachette-logo.png</PackageIconUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0-preview3-35497" />
