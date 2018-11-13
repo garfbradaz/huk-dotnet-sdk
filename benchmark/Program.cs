@@ -11,4 +11,3 @@ namespace Hachette.API.SDK.Benchmark
         }
     }
 }
->
