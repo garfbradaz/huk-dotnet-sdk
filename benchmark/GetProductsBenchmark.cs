@@ -17,7 +17,7 @@ namespace Hachette.API.SDK.Benchmark
             public Config()
             {
                 var baseJob = Job.MediumRun.With(CsProjCoreToolchain.Current.Value);
-                Add(baseJob.WithNuGet("Hachette.API.SDK", "0.2.0-CI-20181113-213555").WithId("0.2.0-CI-20181113-213555"));
+                Add(baseJob.WithNuGet("Hachette.API.SDK", "0.2.0-CI-20181113-222416").WithId("0.2.0-CI-20181113-222416"));
             }
         }
         private  static RestClient client = new RestClient(new Security{
