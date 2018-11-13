@@ -72,31 +72,33 @@ namespace Hachette.API.SDK.Core
         /// </summary>
         public IHachetteSecurity Security { get; private set; }
 
-        /// <summary>
+        //TODO: baseUrl needs to be an optional parameter
+
+        /// /// <summary>
         /// Simple GET Method to obtain a JSON payload.
         /// </summary>
-        /// <param name="baseUrl"></param>
         /// <param name="queryStringParameters"></param>
+        /// <param name="urlOverride"></param>
         /// <typeparam name="TResponse"></typeparam>
         /// <returns>JSON response.</returns>
-        public async virtual Task<dynamic> GetAsync(string baseUrl, IHachetteCommonParameters queryStringParameters)
+        public async virtual Task<dynamic> GetAsync(IHachetteCommonParameters queryStringParameters, string urlOverride = null)
         {
 
-            Trashcan.AllAreNull($"both {nameof(baseUrl)} & {this.Endpoint.BaseUrl} are null",
-                                baseUrl,
+            Trashcan.AllAreNull($"both {nameof(urlOverride)} & {this.Endpoint.BaseUrl} are null",
+                                urlOverride,
                                 this.Endpoint.BaseUrl);
             Trashcan.IsNull(nameof(queryStringParameters), queryStringParameters);
 
             //baseUrl is basically an override and should be treated as such.
             string urlToUse = string.Empty;
-            if (string.IsNullOrEmpty(baseUrl))
+            if (string.IsNullOrEmpty(urlOverride))
             {
                 Trashcan.IsNull(nameof(this.Endpoint.BaseUrl), this.Endpoint.BaseUrl);
                 urlToUse = this.Endpoint.BaseUrl;
             }
             else
             {
-                urlToUse = baseUrl;
+                urlToUse = urlOverride;
             }
             using (var request = new HttpRequestMessage(HttpMethod.Get, new Uri($"{urlToUse}{queryStringParameters.BuildQueryString()}")))
             {
