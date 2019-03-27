@@ -77,11 +77,12 @@ phases:
     displayName: 'dotnet pack'
     inputs:
       command: pack
+      arguments: '-c Release'
       packagesToPack: src/Hachette.API.SDK.csproj
       packDirectory: '$(Build.ArtifactStagingDirectory)/Pack'
       versioningScheme: byPrereleaseNumber
       majorVersion: 0
-      minorVersion: 2
+      minorVersion: 3
   # - task: DotNetCoreCLI@2
   #   displayName: 'dotnet push nuget org'
   #   inputs:
